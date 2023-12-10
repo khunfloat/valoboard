@@ -44,6 +44,7 @@ public class Jett extends Duelist {
             this.setShootingDamage(7);
 
 //            May have to add more Actions to use ultimate skill
+            this.setActionAvailable(3);
 
             this.setActionAvailable(this.getActionAvailable() - ULTIMATE_ACTION_COST);
             this.setUltimateAvailable(false);
