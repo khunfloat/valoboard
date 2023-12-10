@@ -40,10 +40,12 @@ public class Brimstone extends Controller {
             if (this.getTeam() == Team.DEFENDER) {
                 for (Agent enemy : Main.attackerAgentList) {
                     enemy.setShootingDamage(enemy.getShootingDamage() - 1);
+                    enemy.setSmokeState(true);
                 }
             } else {
                 for (Agent enemy : Main.defenderAgentList) {
                     enemy.setShootingDamage(enemy.getShootingDamage() - 1);
+                    enemy.setSmokeState(true);
                 }
             }
 

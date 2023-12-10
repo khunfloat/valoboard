@@ -17,6 +17,7 @@ public abstract class Agent implements Moveable {
     private boolean isDead;
     private Coordinate coordinate;
     private boolean isSlowState;
+    private boolean isSmokeState;
     public final int DEFAULT_ACTION = 3;
     public final int BASIC_ACTION_COST = 1;
     public final int SKILL_ACTION_COST = 2;
@@ -148,5 +149,13 @@ public abstract class Agent implements Moveable {
 
     public void setDead(boolean dead) {
         isDead = dead;
+    }
+
+    public boolean isSmokeState() {
+        return isSmokeState;
+    }
+
+    public void setSmokeState(boolean smokeState) {
+        isSmokeState = smokeState;
     }
 }

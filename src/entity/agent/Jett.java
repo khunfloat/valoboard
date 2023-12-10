@@ -16,6 +16,7 @@ public class Jett extends Duelist {
         if ((this.getActionAvailable() >= SKILL_ACTION_COST) && (getFirstSkillAvailable())) {
             System.out.println("Cloud Burst");
             enemy.setShootingDamage(enemy.getShootingDamage() - 1);
+            enemy.setSmokeState(true);
 
             this.setActionAvailable(this.getActionAvailable() - SKILL_ACTION_COST);
             this.setFirstSkillAvailable(false);
