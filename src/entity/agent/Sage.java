@@ -30,13 +30,13 @@ public class Sage extends Sentinel {
         }
     }
 
-    public void secondSkill(Agent ally) {
+    public void ultimateSkill(Agent ally) {
         if (ally.getTeam() == this.getTeam()) {
-            if (this.getActionAvailable() >= SKILL_ACTION_COST && getSecondSkillAvailable()) {
+            if (this.getActionAvailable() >= ULTIMATE_ACTION_COST && getSecondSkillAvailable()) {
                 System.out.println("Healing Orb");
                 ally.setHp(ally.getHp() + 5);
 
-                this.setActionAvailable(this.getActionAvailable() - SKILL_ACTION_COST);
+                this.setActionAvailable(this.getActionAvailable() - ULTIMATE_ACTION_COST);
                 this.setSecondSkillAvailable(false);
             } else {
                 System.out.println("Out of action");
@@ -46,21 +46,21 @@ public class Sage extends Sentinel {
         }
     }
 
-    public void ultimateSkill(Agent ally) {
-        if (ally.isDead() && ally.getTeam() == this.getTeam()) {
-            if (this.getActionAvailable() >= ULTIMATE_ACTION_COST && getUltimateAvailable()) {
-                System.out.println("Resurrection");
-
-                ally.setDead(false);
-                ally.setHp(3);
-
-                this.setActionAvailable(this.getActionAvailable() - ULTIMATE_ACTION_COST);
-                this.setUltimateAvailable(false);
-            } else {
-                System.out.println("Out of action");
-            }
-        } else {
-            System.out.println("Can't resurrect enemy");
-        }
-    }
+//    public void ultimateSkill(Agent ally) {
+//        if (ally.isDead() && ally.getTeam() == this.getTeam()) {
+//            if (this.getActionAvailable() >= ULTIMATE_ACTION_COST && getUltimateAvailable()) {
+//                System.out.println("Resurrection");
+//
+//                ally.setDead(false);
+//                ally.setHp(3);
+//
+//                this.setActionAvailable(this.getActionAvailable() - ULTIMATE_ACTION_COST);
+//                this.setUltimateAvailable(false);
+//            } else {
+//                System.out.println("Out of action");
+//            }
+//        } else {
+//            System.out.println("Can't resurrect enemy");
+//        }
+//    }
 }

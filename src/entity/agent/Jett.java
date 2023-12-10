@@ -2,9 +2,13 @@ package entity.agent;
 
 import constant.team.Team;
 import entity.base.Agent;
+import javafx.scene.image.Image;
 import utils.Coordinate;
 
 public class Jett extends Duelist {
+
+    public final Image defenderImage = new Image(ClassLoader.getSystemResource("image/d-jett.png").toString());
+    public final Image attackerImage = new Image(ClassLoader.getSystemResource("image/a-jett.png").toString());
 
     public Jett(String name, Team team) {
         super();
@@ -12,18 +16,18 @@ public class Jett extends Duelist {
         this.setTeam(team);
     }
 
-    public void firstSkill(Agent enemy) {
-        if ((this.getActionAvailable() >= SKILL_ACTION_COST) && (getFirstSkillAvailable())) {
-            System.out.println("Cloud Burst");
-            enemy.setShootingDamage(enemy.getShootingDamage() - 1);
-            enemy.setSmokeState(true);
-
-            this.setActionAvailable(this.getActionAvailable() - SKILL_ACTION_COST);
-            this.setFirstSkillAvailable(false);
-        } else {
-            System.out.println("Out of action");
-        }
-    }
+//    public void firstSkill(Agent enemy) {
+//        if ((this.getActionAvailable() >= SKILL_ACTION_COST) && (getFirstSkillAvailable())) {
+//            System.out.println("Cloud Burst");
+//            enemy.setShootingDamage(enemy.getShootingDamage() - 1);
+//            enemy.setSmokeState(true);
+//
+//            this.setActionAvailable(this.getActionAvailable() - SKILL_ACTION_COST);
+//            this.setFirstSkillAvailable(false);
+//        } else {
+//            System.out.println("Out of action");
+//        }
+//    }
 
     public void secondSkill(Coordinate destination) {
         if ((this.getActionAvailable() >= SKILL_ACTION_COST) && (getSecondSkillAvailable())) {

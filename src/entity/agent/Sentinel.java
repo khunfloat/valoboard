@@ -17,6 +17,7 @@ public abstract class Sentinel extends Agent {
         this.setShootingDamage(DEFAULT_SHOOTING_DAMAGE);
         this.setShootingDistance(DEFAULT_SHOOTING_DISTANCE);
         this.setSlowState(false);
+        this.setSmokeState(false);
     }
 
     @Override

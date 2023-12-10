@@ -14,24 +14,24 @@ public class Brimstone extends Controller {
         this.setTeam(team);
     }
 
-    public void firstSkill() {
-        if (this.getActionAvailable() >= SKILL_ACTION_COST && getFirstSkillAvailable()) {
-            System.out.println("Beacon Orb");
-
-            ArrayList<Agent> effectedAgents = utils.SkillEffect.getEffectAgent(this.getCoordinate(), 5);
-
-            for (Agent agent : effectedAgents) {
-                if (agent.getTeam() == this.getTeam()) {
-                    agent.setShootingDamage(agent.getShootingDamage() + 2);
-                }
-            }
-
-            this.setActionAvailable(this.getActionAvailable() - SKILL_ACTION_COST);
-            this.setFirstSkillAvailable(false);
-        } else {
-            System.out.println("Out of action");
-        }
-    }
+//    public void firstSkill() {
+//        if (this.getActionAvailable() >= SKILL_ACTION_COST && getFirstSkillAvailable()) {
+//            System.out.println("Beacon Orb");
+//
+//            ArrayList<Agent> effectedAgents = utils.SkillEffect.getEffectAgent(this.getCoordinate(), 5);
+//
+//            for (Agent agent : effectedAgents) {
+//                if (agent.getTeam() == this.getTeam()) {
+//                    agent.setShootingDamage(agent.getShootingDamage() + 2);
+//                }
+//            }
+//
+//            this.setActionAvailable(this.getActionAvailable() - SKILL_ACTION_COST);
+//            this.setFirstSkillAvailable(false);
+//        } else {
+//            System.out.println("Out of action");
+//        }
+//    }
 
     public void secondSkill() {
         if (this.getActionAvailable() >= SKILL_ACTION_COST && getSecondSkillAvailable()) {
