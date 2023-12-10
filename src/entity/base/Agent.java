@@ -3,7 +3,7 @@ package entity.base;
 import constant.team.Team;
 import utils.Coordinate;
 
-public abstract class Agent implements Skillable{
+public abstract class Agent implements Moveable {
 
     private String name;
     private Team team;
@@ -14,13 +14,19 @@ public abstract class Agent implements Skillable{
     private boolean firstSkillAvailable;
     private boolean secondSkillAvailable;
     private boolean ultimateAvailable;
+    private boolean isDead;
     private Coordinate coordinate;
+    private boolean isSlowState;
+    public final int DEFAULT_ACTION = 3;
+    public final int BASIC_ACTION_COST = 1;
+    public final int SKILL_ACTION_COST = 2;
+    public final int ULTIMATE_ACTION_COST = 3;
 
     public void shoot(Agent enemy) {
 //      must be check is in distance with SkillRange.getAvailableSkillRange() first with distance = 1
-        if (actionAvailable >= 1) {
+        if (actionAvailable >= BASIC_ACTION_COST) {
             enemy.setHp(enemy.getHp() - this.getShootingDamage());
-            this.setActionAvailable(this.getActionAvailable() - 1);
+            this.setActionAvailable(this.getActionAvailable() - BASIC_ACTION_COST);
         } else {
             System.out.println("Out of action");
         }
@@ -28,14 +34,20 @@ public abstract class Agent implements Skillable{
 
     public void move(Coordinate destination) {
 //      must be check is in distance with Movement.getAvailableMove() first
+        if (isSlowState()) {
+            if (actionAvailable >= BASIC_ACTION_COST) {
+                this.setCoordinate(destination);
+                this.setActionAvailable(this.getActionAvailable() - BASIC_ACTION_COST);
+            } else {
+                System.out.println("Out of action");
+            } }
 
-        if (actionAvailable >= 1) {
-            this.setCoordinate(destination);
-            this.setActionAvailable(this.getActionAvailable() - 1);
-        } else {
-            System.out.println("Out of action");
+        else {
+            System.out.println("Can't move because of slow state");
         }
     }
+
+    public abstract void setNewRound();
 
     public boolean getFirstSkillAvailable() {
         return firstSkillAvailable;
@@ -69,8 +81,6 @@ public abstract class Agent implements Skillable{
         this.ultimateAvailable = ultimateAvailable;
     }
 
-    public abstract void setNewRound();
-
     public String getName() {
         return name;
     }
@@ -92,7 +102,7 @@ public abstract class Agent implements Skillable{
     }
 
     public void setHp(int hp) {
-        if (this.hp < 0) {
+        if (hp <= 0) {
             this.hp = 0;
             return;
         }
@@ -122,5 +132,21 @@ public abstract class Agent implements Skillable{
 
     public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
+    }
+
+    public boolean isSlowState() {
+        return isSlowState;
+    }
+
+    public void setSlowState(boolean slowState) {
+        isSlowState = slowState;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
     }
 }

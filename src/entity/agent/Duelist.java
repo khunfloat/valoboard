@@ -4,17 +4,31 @@ import entity.base.Agent;
 
 public abstract class Duelist extends Agent {
 
-    public Duelist() {
-        this.setShootingDamage(4);
-        this.setShootingDistance(2);
-    }
+    public final int DEFAULT_HP = 6;
+    public final int DEFAULT_SHOOTING_DAMAGE = 4;
+    public final int DEFAULT_SHOOTING_DISTANCE = 2;
 
     @Override
     public void setNewRound() {
-        this.setHp(6);
-        this.setShootingDamage(4);
-        this.setShootingDistance(2);
+        this.setActionAvailable(DEFAULT_ACTION);
         this.setFirstSkillAvailable(true);
         this.setSecondSkillAvailable(true);
+        this.setHp(DEFAULT_HP);
+        this.setShootingDamage(DEFAULT_SHOOTING_DAMAGE);
+        this.setShootingDistance(DEFAULT_SHOOTING_DISTANCE);
+        this.setSlowState(false);
+    }
+
+    @Override
+    public void setHp(int hp) {
+        if (hp <= 0) {
+            super.setHp(0);
+            return;
+        } else if (hp >= DEFAULT_HP) {
+            super.setHp(DEFAULT_HP);
+            return;
+        }
+
+        super.setHp(hp);
     }
 }

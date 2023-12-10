@@ -2,8 +2,6 @@ package utils;
 
 import application.Main;
 
-import java.util.ArrayList;
-
 public class Coordinate {
     public int x;
     public int y;
@@ -19,5 +17,4 @@ public class Coordinate {
         }
         return false;
     }
-
 }

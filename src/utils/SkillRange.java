@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class SkillRange {
     public static ArrayList<Coordinate> getAvailableSkillRange(Coordinate coordinate, int distance) {
 //  x-cross and +-cross around the agent
+//  coordinate - agent's coordinate
+//  distance - skill's distance
 
         ArrayList<Coordinate> result = new ArrayList<>();
 
